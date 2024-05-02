@@ -1,0 +1,122 @@
+{
+    "name": "testflow",
+    "createdAt": "24-05-01 16:27:00",
+    "workflow": [
+        {
+            "name": "User",
+            "type": "user",
+            "upstream": [],
+            "downstream": [
+                "Username",
+                "Phone"
+            ],
+            "data": {
+                "input": {
+                    "name": "John Doe",
+                    "email": "john.doe@gmail.com",
+                    "phone": "123-456-7890"
+                },
+                "output": {}
+            },
+            "status": "pending",
+            "completedAt": null
+        },
+        {
+            "name": "Username",
+            "type": "username",
+            "upstream": [
+                "User"
+            ],
+            "downstream": [
+                "Customer"
+            ],
+            "data": {
+                "input": {},
+                "output": {}
+            },
+            "status": "pending",
+            "completedAt": null
+        },
+        {
+            "name": "Phone",
+            "type": "phone",
+            "upstream": [
+                "User"
+            ],
+            "downstream": [
+                "Customer"
+            ],
+            "data": {
+                "input": {},
+                "output": {}
+            },
+            "status": "pending",
+            "completedAt": null
+        },
+        {
+            "name": "Customer",
+            "type": "customer",
+            "upstream": [
+                "Username",
+                "Phone"
+            ],
+            "downstream": [
+                "Order"
+            ],
+            "data": {
+                "input": {},
+                "output": {}
+            },
+            "status": "pending",
+            "completedAt": null
+        },
+        {
+            "name": "Product",
+            "type": "product",
+            "upstream": [],
+            "downstream": [
+                "Order"
+            ],
+            "data": {
+                "input": {
+                    "product": "beer",
+                    "price": "10"
+                },
+                "output": {}
+            },
+            "status": "pending",
+            "completedAt": null
+        },
+        {
+            "name": "Order",
+            "type": "order",
+            "upstream": [
+                "Customer",
+                "Product"
+            ],
+            "downstream": [
+                "Purchase"
+            ],
+            "data": {
+                "input": {},
+                "output": {}
+            },
+            "status": "pending",
+            "completedAt": null
+        },
+        {
+            "name": "Purchase",
+            "type": "purchase",
+            "upstream": [
+                "Order"
+            ],
+            "downstream": [],
+            "data": {
+                "input": {},
+                "output": {}
+            },
+            "status": "pending",
+            "completedAt": null
+        }
+    ]
+}

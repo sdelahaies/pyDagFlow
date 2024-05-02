@@ -1,0 +1,100 @@
+{
+	"name": "workflow1",
+	"createdAt": "24-05-01 17:12:00",
+	"workflow": [
+		{
+			"name": "FileInput",
+			"type": "fileinput",
+			"upstream": [],
+			"downstream": [
+				"BEiT",
+				"PyPDF2"
+			],
+			"data": {
+				"input": {
+					"filename": "edf_clean.pdf"
+				},
+				"output": {}
+			},
+			"status": "pending",
+			"completedAt": null
+		},
+		{
+			"name": "PyPDF2",
+			"type": "pypdf2",
+			"upstream": [
+				"FileInput"
+			],
+			"downstream": [
+				"Output"
+			],
+			"data": {
+				"input": {},
+				"output": {}
+			},
+			"status": "pending",
+			"completedAt": null
+		},
+		{
+			"name": "BEiT",
+			"type": "beit",
+			"upstream": [
+				"FileInput"
+			],
+			"downstream": [
+				"Output"
+			],
+			"data": {
+				"input": {},
+				"output": {}
+			},
+			"status": "pending",
+			"completedAt": null
+		},
+		{
+			"name": "Output",
+			"type": "output",
+			"upstream": [
+				"BEiT",
+				"PyPDF2"
+			],
+			"downstream": [],
+			"data": {
+				"input": {},
+				"output": {}
+			},
+			"status": "pending",
+			"completedAt": null
+		}
+	],
+	"Transform": "AWS::Serverless-2016-10-31",
+	"Resources": {
+		"Api": {
+			"Type": "AWS::Serverless::Api",
+			"Properties": {
+				"Name": {
+					"Fn::Sub": [
+						"${ResourceName} From Stack ${AWS::StackName}",
+						{
+							"ResourceName": "Api"
+						}
+					]
+				},
+				"StageName": "Prod",
+				"DefinitionBody": {
+					"openapi": "3.0",
+					"info": {},
+					"paths": {
+						"/": {
+							"get": {
+								"responses": {}
+							}
+						}
+					}
+				},
+				"EndpointConfiguration": "REGIONAL",
+				"TracingEnabled": true
+			}
+		}
+	}
+}
