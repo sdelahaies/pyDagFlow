@@ -110,4 +110,4 @@ if __name__ == "__main__":
 
     print()
     print("\033[5;38;5;162m------------ FINAL DTO ------------\033[0;0m")
-    pprint(dto) 
+    pprint(dto,width=300,depth=4) 

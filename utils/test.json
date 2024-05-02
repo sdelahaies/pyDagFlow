@@ -1,0 +1,88 @@
+{
+    "name": "testflow",
+    "createdAt": "24-05-01 16:27:00",
+    "workflow": [
+        {
+            "name": "FileInput",
+            "type": "fileinput",
+            "upstream": [],
+            "downstream": [
+                "BEiT",
+                "PyPDF2",
+                "PyMuPDF"
+            ],
+            "data": {
+                "input": {
+                    "filename": "private_edf_clean.pdf"
+                },
+                "output": {}
+            },
+            "status": "pending",
+            "completedAt": null
+        },
+        {
+            "name": "BEiT",
+            "type": "beit",
+            "upstream": [
+                "FileInput"
+            ],
+            "downstream": [
+                "Output"
+            ],
+            "data": {
+                "input": {},
+                "output": {}
+            },
+            "status": "pending",
+            "completedAt": null
+        },
+        {
+            "name": "PyPDF2",
+            "type": "pypdf2",
+            "upstream": [
+                "FileInput"
+            ],
+            "downstream": [
+                "Output"
+            ],
+            "data": {
+                "input": {},
+                "output": {}
+            },
+            "status": "pending",
+            "completedAt": null
+        },
+        {
+            "name": "PyMuPDF",
+            "type": "pymupdf",
+            "upstream": [
+                "FileInput"
+            ],
+            "downstream": [
+                "Output"
+            ],
+            "data": {
+                "input": {},
+                "output": {}
+            },
+            "status": "pending",
+            "completedAt": null
+        },
+        {
+            "name": "Output",
+            "type": "output",
+            "upstream": [
+                "BEiT",
+                "PyPDF2",
+                "PyMuPDF"
+            ],
+            "downstream": [],
+            "data": {
+                "input": {},
+                "output": {}
+            },
+            "status": "pending",
+            "completedAt": null
+        }
+    ]
+}

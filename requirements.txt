@@ -3,3 +3,4 @@ requests
 matplotlib
 networkx
 PyPDF2
+PyYAML

@@ -1,0 +1,15 @@
+name: testflow
+createdAt: 24-05-01 16:27:00
+nodes:
+  - 1: FileInput
+  - 2: BEiT
+  - 3: PyPDF2
+  - 4: PyMuPDF
+  - 5: Output
+flow: 
+  - 1>>2,3,4
+  - 2,3,4>>5
+inputs:
+  - FileInput: 
+      filename: private_edf_clean.pdf
+      

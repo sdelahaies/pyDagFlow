@@ -16,10 +16,10 @@ pip install -r requirements.txt
 
 ## Workflow and DTO (Data Transfer Object)
 
-The workflow can be defined in two ways: a `.yaml` or a `.json` file. The `.json` can be obtained from the yaml using the following command
+The workflow can be defined in two ways: a `.yaml` or a `.json` file. The `.json` can be obtained from the yaml using the `yaml2json.py` script in the `utils` folder:
     
 ```bash
-python -m pyDagFlow.utils.yaml2json <yaml_file> <json_file>
+python yaml2json.py <yaml_file> <json_file>
 ```
 
 The following is an example of a `testflow.yaml` file:
