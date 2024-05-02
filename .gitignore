@@ -214,3 +214,6 @@ pyrightconfig.json
 
 # workdir
 workdir/
+
+# files starting with a private_ prefix
+private_*

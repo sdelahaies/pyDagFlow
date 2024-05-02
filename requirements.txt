@@ -1,1 +1,5 @@
 pypubsub
+requests
+matplotlib
+networkx
+PyPDF2

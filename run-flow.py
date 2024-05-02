@@ -1,4 +1,5 @@
-from functions.testFlowFunctions import *
+#from functions.testFlowFunctions import *
+from functions.flowFunctions import *
 from pubsub import pub
 import time
 from datetime import datetime
@@ -92,18 +93,6 @@ def init_workflow():
             node['completedAt'] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")  
             input_nodes.append(node['name'])
     return input_nodes
-
-
-# # load the dto from the file dto.json
-# with open('./dto/flowDTO.json') as f:
-#     dto = json.load(f)
-# # initialize the workflow
-# input_nodes = init_workflow()
-# # Create nodes
-# nodes = create_nodes(dto['workflow'])
-# # Start the workflow
-# process_workflow(input_nodes)
-
 
 
 if __name__ == "__main__":
