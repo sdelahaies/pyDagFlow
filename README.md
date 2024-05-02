@@ -101,7 +101,7 @@ from functions.testFlowFunctions import *
 then the workflow can be run using the following command:
 
 ```bash
-python run-flow.py ./dto/testFlowDTO.json
+python run-flow.py ./dto/exampleDTO.json
 ```
 
 the DTO is updated as the tasks are completed. 

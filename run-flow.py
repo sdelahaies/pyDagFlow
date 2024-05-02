@@ -1,4 +1,4 @@
-#from functions.testFlowFunctions import *
+from functions.testFlowFunctions import *
 from functions.flowFunctions import *
 from pubsub import pub
 import time
