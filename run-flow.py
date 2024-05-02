@@ -7,6 +7,8 @@ from pprint import pprint
 import json
 import sys
 from dotenv import load_dotenv
+from utils.yaml2json_workflow import generate_json_workflow
+
 
 load_dotenv() 
 
@@ -62,8 +64,8 @@ class Node:
             for node in dto['workflow']:
                 if node['name'] == downstream_node:
                     node['data']['input'][self.name] = self.data['output']
-                    print(
-                        f"   Hydrating \033[1;38;5;208m{downstream_node}\033[0;0m with \033[1;38;5;208m{self.name}\033[0;0m data")
+                    print(f"   Hydrating \033[1;38;5;208m{downstream_node}\033[0;0m with \033[1;38;5;208m{self.name}\033[0;0m data")            
+
 
         # Notify downstream nodes ###  wait until previous loop is done otherwise I may send the message before it is hydrated(?)
         for downstream_node in self.downstream:
@@ -111,9 +113,14 @@ def init_workflow():
 if __name__ == "__main__":
     if len(sys.argv) <= 1:
         exit("You need 1 argument: python run-flow.py <path-to-dto>")
-    dto_path = sys.argv[1]
-    with open(dto_path) as f:
-        dto = json.load(f)
+
+    dto_path=sys.argv[1]
+    if dto_path.endswith('.yaml'):
+        dto=generate_json_workflow(dto_path)
+    else:
+        with open(dto_path) as f:
+            dto = json.load(f)
+
     # initialize the workflow
     input_nodes = init_workflow()
     # Create nodes

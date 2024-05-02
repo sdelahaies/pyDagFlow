@@ -1,7 +1,7 @@
 import fitz
 
 def pymupdf(input:dict) -> dict:
-    filename = input['FileInput']['filename']
+    filename = input["FileInput"]['filename']
     try:
         doc = fitz.open(f"./uploads/{filename}")
         page = doc[0]

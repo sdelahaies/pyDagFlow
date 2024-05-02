@@ -6,10 +6,19 @@ nodes:
   - 3: PyPDF2
   - 4: PyMuPDF
   - 5: Output
+  - 6: PDF2Text
+  - 7: Tesseract
+  - 8: RegexSiren
+  - 9: PaddleOCR
+  - 10: RegexSiren
 flow: 
-  - 1>>2,3,4
-  - 2,3,4>>5
+  - 1>>2,3,4,6,7,9
+  - 2,3,4,6,7>>5
+  - 7>>8
+  - 8>>5
+  - 9>>10
+  - 10>>5
 inputs:
   - FileInput: 
-      filename: private_edf_clean.pdf
+      filename: ticket_resto.pdf
       

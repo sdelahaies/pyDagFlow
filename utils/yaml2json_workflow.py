@@ -17,23 +17,29 @@ def generate_json_workflow(yaml_file):
         "createdAt": date,
         "workflow": []
     }
+    node_names={int(node): node_str.split(',')[0] for node_dict in data['nodes'] for node, node_str in node_dict.items()}
+    node_types={int(node): node_str.split(',')[1] for node_dict in data['nodes'] for node, node_str in node_dict.items()}
 
-    for node_id, node_name in nodes.items():
+    for node_id, node_name in node_names.items():
         upstream = []
         downstream = []
         for link in flow:
             source_nodes = [int(s) for s in link.split(">>")[0].split(",")]
             target_nodes = [int(s) for s in link.split(">>")[1].split(",")]
             if node_id in source_nodes:
-                downstream.extend(nodes[target_node] for target_node in target_nodes)
+                downstream.extend(node_names[target_node] for target_node in target_nodes)
             if node_id in target_nodes:
-                upstream.extend(nodes[source_node] for source_node in source_nodes)
+                upstream.extend(node_names[source_node] for source_node in source_nodes)
         
-        input_data = inputs.get(node_name, {})
+       
 
+        # node_name=node_name_type.split(",")[0]
+        # node_type=node_name_type.split(",")[1]
+        input_data = inputs.get(node_name, {})
         json_node = {
             "name": node_name,
-            "type": node_name.lower(),
+            #"type": node_name.lower(),
+            "type": node_types[node_id],
             "upstream": list(set(upstream)),
             "downstream": list(set(downstream)),
             "data": {

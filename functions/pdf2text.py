@@ -1,7 +1,7 @@
 import pdftotext
 
 def pdf2text(input:dict) -> dict:
-    filename = input['FileInput']['filename']
+    filename = input["FileInput"]['filename']
     try:
         with open(f"./uploads/{filename}", "rb") as f:
             pdf = pdftotext.PDF(f)

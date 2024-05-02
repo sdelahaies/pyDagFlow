@@ -8,13 +8,15 @@
             "upstream": [],
             "downstream": [
                 "PyPDF2",
-                "PDF2Text",
+                "PaddleOCR",
+                "Tesseract",
                 "BEiT",
+                "PDF2Text",
                 "PyMuPDF"
             ],
             "data": {
                 "input": {
-                    "filename": "invoice.pdf"
+                    "filename": "ticket_resto.pdf"
                 },
                 "output": {}
             },
@@ -74,8 +76,11 @@
             "type": "output",
             "upstream": [
                 "PyPDF2",
-                "PDF2Text",
+                "Tesseract",
+                "RegexSiren-tes",
                 "BEiT",
+                "RegexSiren-pad",
+                "PDF2Text",
                 "PyMuPDF"
             ],
             "downstream": [],
@@ -91,6 +96,71 @@
             "type": "pdf2text",
             "upstream": [
                 "FileInput"
+            ],
+            "downstream": [
+                "Output"
+            ],
+            "data": {
+                "input": {},
+                "output": {}
+            },
+            "status": "pending",
+            "completedAt": null
+        },
+        {
+            "name": "Tesseract",
+            "type": "tesseract",
+            "upstream": [
+                "FileInput"
+            ],
+            "downstream": [
+                "RegexSiren-tes",
+                "Output"
+            ],
+            "data": {
+                "input": {},
+                "output": {}
+            },
+            "status": "pending",
+            "completedAt": null
+        },
+        {
+            "name": "RegexSiren-tes",
+            "type": "regexsiren",
+            "upstream": [
+                "Tesseract"
+            ],
+            "downstream": [
+                "Output"
+            ],
+            "data": {
+                "input": {},
+                "output": {}
+            },
+            "status": "pending",
+            "completedAt": null
+        },
+        {
+            "name": "PaddleOCR",
+            "type": "paddleocr",
+            "upstream": [
+                "FileInput"
+            ],
+            "downstream": [
+                "RegexSiren-pad"
+            ],
+            "data": {
+                "input": {},
+                "output": {}
+            },
+            "status": "pending",
+            "completedAt": null
+        },
+        {
+            "name": "RegexSiren-pad",
+            "type": "regexsiren",
+            "upstream": [
+                "PaddleOCR"
             ],
             "downstream": [
                 "Output"

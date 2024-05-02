@@ -1,7 +1,7 @@
 from PyPDF2 import PdfReader
 
 def pypdf2(input:dict) -> dict:
-    filename = input['FileInput']['filename']
+    filename = input["FileInput"]['filename']
     try:
         pdf = PdfReader(f"./uploads/{filename}")
         text='\n'
