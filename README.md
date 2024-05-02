@@ -92,16 +92,15 @@ def purchase(input:dict) -> dict:
 
 ## Running the workflow
 
-First edit the `run-flow.py` file and import the functions file, in the example above it would be
-
-```python
-from functions.testFlowFunctions import *
-```
-
-then the workflow can be run using the following command:
+then the workflow can be processed using the following command:
 
 ```bash
 python run-flow.py ./dto/exampleDTO.json
 ```
+functions (nodes) can be found in `functions` folder, aditional functions can be added to the `functions` folder and imported in the `flowFunctions.py` script.
 
 the DTO is updated as the tasks are completed. 
+
+## Complementary functions 
+
+complementary functions are to be found in PyDagFlow-q71.

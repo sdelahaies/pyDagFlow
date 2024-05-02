@@ -4,3 +4,5 @@ matplotlib
 networkx
 PyPDF2
 PyYAML
+pdftotext
+python-dotenv
