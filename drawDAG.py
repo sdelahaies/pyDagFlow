@@ -4,8 +4,19 @@ import sys
 
 
 def draw_dag(data, output):
+    """
+    Draw a Directed Acyclic Graph (DAG) based on the provided data with node types displayed.
+
+    Args:
+        data: A dictionary containing 'nodes' and 'flow' information to construct the DAG.
+        output: The name of the output file to save the DAG visualization.
+
+    Returns:
+        None. The DAG is rendered as a PNG file and saved with the specified output filename.
+    """
     # Create a mapping between node IDs and names with types
-    node_mapping = {str(list(node.keys())[0]): str(list(node.values())[0]) for node in data['nodes']}
+    node_mapping = {str(list(node.keys())[0]): str(
+        list(node.values())[0]) for node in data['nodes']}
 
     # Initialize the Digraph object
     dot = Digraph()
@@ -20,8 +31,10 @@ def draw_dag(data, output):
     edges = set()
     for edge in data['flow']:
         sources, targets = edge.split('>>')
-        sources = [node_mapping[s.strip()].split(',')[0] for s in sources.split(',')]
-        targets = [node_mapping[t.strip()].split(',')[0] for t in targets.split(',')]
+        sources = [node_mapping[s.strip()].split(',')[0]
+                                        for s in sources.split(',')]
+        targets = [node_mapping[t.strip()].split(',')[0]
+                                        for t in targets.split(',')]
 
         for source in sources:
             for target in targets:
@@ -38,8 +51,8 @@ def draw_dag(data, output):
 if __name__ == "__main__":
     if len(sys.argv) <= 2:
         exit("You need 2 argument: python drawDAG.py <path-to-yaml> <path-to-output>")
-    filename = sys.argv[1]
-    output = sys.argv[2]
+    filename=sys.argv[1]
+    output=sys.argv[2]
     with open(filename) as f:
-        data = yaml.load(f, Loader=yaml.FullLoader)
+        data=yaml.load(f, Loader=yaml.FullLoader)
     draw_dag(data, output)

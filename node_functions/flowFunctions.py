@@ -4,18 +4,7 @@ from .pdf2text import pdf2text
 from .fileinput import fileinput
 from .output import output
 
-from .q71.tesseract import tesseract
-from .q71.beit import beit
-from .q71.donut import donut
-from .q71.paddleocr import paddleocr
-from .q71.regexsiren import regexsiren
-from .q71.ollama import ollama
-from .q71.prompt import prompt # type: ignore
-
-
-
-
-    
+from .q71.coreAI.AI import *
 
 
 

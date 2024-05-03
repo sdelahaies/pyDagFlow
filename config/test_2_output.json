@@ -1,0 +1,345 @@
+{
+    "name": "testflow",
+    "createdAt": "24-05-01 16:27:00",
+    "workflow": [
+        {
+            "name": "FileInput",
+            "type": "fileinput",
+            "upstream": [],
+            "downstream": [
+                "PyMuPDF",
+                "PyPDF2",
+                "Tesseract",
+                "PaddleOCR",
+                "BEiT",
+                "PDF2Text"
+            ],
+            "data": {
+                "input": {
+                    "filename": "ticket_resto.pdf"
+                },
+                "output": {
+                    "filename": "ticket_resto.pdf"
+                }
+            },
+            "status": "completed",
+            "completedAt": "2024-05-03 16:08:56"
+        },
+        {
+            "name": "BEiT",
+            "type": "beit",
+            "upstream": [
+                "FileInput"
+            ],
+            "downstream": [
+                "Output"
+            ],
+            "data": {
+                "input": {
+                    "FileInput": {
+                        "filename": "ticket_resto.pdf"
+                    }
+                },
+                "output": {
+                    "class": "ticket_carburant"
+                }
+            },
+            "status": "completed",
+            "completedAt": "2024-05-03 16:08:58"
+        },
+        {
+            "name": "PyPDF2",
+            "type": "pypdf2",
+            "upstream": [
+                "FileInput"
+            ],
+            "downstream": [
+                "Output"
+            ],
+            "data": {
+                "input": {
+                    "FileInput": {
+                        "filename": "ticket_resto.pdf"
+                    }
+                },
+                "output": {
+                    "text": "\n\n"
+                }
+            },
+            "status": "completed",
+            "completedAt": "2024-05-03 16:08:56"
+        },
+        {
+            "name": "PyMuPDF",
+            "type": "pymupdf",
+            "upstream": [
+                "FileInput"
+            ],
+            "downstream": [
+                "Output"
+            ],
+            "data": {
+                "input": {
+                    "FileInput": {
+                        "filename": "ticket_resto.pdf"
+                    }
+                },
+                "output": {
+                    "text": ""
+                }
+            },
+            "status": "completed",
+            "completedAt": "2024-05-03 16:08:56"
+        },
+        {
+            "name": "Output",
+            "type": "output",
+            "upstream": [
+                "PyMuPDF",
+                "PyPDF2",
+                "RegexSiren-tes",
+                "Tesseract",
+                "Ollama",
+                "BEiT",
+                "PDF2Text",
+                "RegexSiren-pad"
+            ],
+            "downstream": [],
+            "data": {
+                "input": {
+                    "PyMuPDF": {
+                        "text": ""
+                    },
+                    "PyPDF2": {
+                        "text": "\n\n"
+                    },
+                    "Tesseract": {
+                        "text": "MONTEROSSO\n\n7 rue Georges Bouzerait\n92120 MONTROUGE\nFrance\nTel : 01 42 53 25 23\nDate : 14/04/2023 - 16:46\nJustificatif n\u00b0 1/1 Imp. N\u00b0 6\nJ720552-6 Tick du 30/01/2023-13:38\n\nTable N\u00b05 = Couvert: 3\n\n2 x Repas complet(s) 26 ,30\n\nTOTAL TIC: 52,60 EUR\n\nCode TVA HT TVA TIC\n(1) 10.00 39,52 3,95 43,48\n(2) 20.00 7,60 1,52 9,12\nTOTAL HT = 47,13\n\n(B) C.B. 52,60\n\nR\u00e9glement proratis\u00e9 selon ticket initial\n\nJusti ficatif non valable\npour encaissement\n\ndis et sont donc donn\u00e9s uniquement a titre\ninformat i f\nSIRET 82892173400012 - NAF 5610A\nTVA Intracom FR7519113120\nau capital de\n\nLEO2 v2.52.096.056 - (NF525)B 0001 zV3F\nService : Manager (1)x*\nCaisse 1\nMerci & bient\u00e9t\n\n"
+                    },
+                    "RegexSiren-tes": {
+                        "siren": "828921734",
+                        "siret": "82892173400012",
+                        "codeNAF": "5610A",
+                        "tvaIntra": "FR76828921734",
+                        "warningSIREN": "",
+                        "warningTVA": ""
+                    },
+                    "RegexSiren-pad": {
+                        "siren": null,
+                        "siret": null,
+                        "codeNAF": "5610A",
+                        "tvaIntra": null,
+                        "warningSIREN": "",
+                        "warningTVA": ""
+                    },
+                    "BEiT": {
+                        "class": "ticket_carburant"
+                    },
+                    "PDF2Text": {
+                        "text": "\f"
+                    },
+                    "Ollama": {
+                        "response": "To extract relevant information from a given text, you should first identify the main topic and key details. Here's an example of how to approach it:\n\nGiven Text: \"Apple Inc. reported its quarterly earnings for Q4 2021, showing a revenue increase of 5% compared to the previous quarter. Their iPhone sales contributed to the majority of this growth.\"\n\nRelevant Information:\n- Company: Apple Inc.\n- Subject: Quarterly earnings report (Q4 2021)\n- Key Detail: Revenue increased by 5% from the previous quarter.\n- Additional Detail: Majority of revenue growth attributed to iPhone sales.\n\nPlease note that this is a general approach, and depending on your specific needs or context, you might need to extract different kinds of information from the text provided."
+                    }
+                },
+                "output": {
+                    "PyMuPDF": {
+                        "text": ""
+                    },
+                    "PyPDF2": {
+                        "text": "\n\n"
+                    },
+                    "Tesseract": {
+                        "text": "MONTEROSSO\n\n7 rue Georges Bouzerait\n92120 MONTROUGE\nFrance\nTel : 01 42 53 25 23\nDate : 14/04/2023 - 16:46\nJustificatif n\u00b0 1/1 Imp. N\u00b0 6\nJ720552-6 Tick du 30/01/2023-13:38\n\nTable N\u00b05 = Couvert: 3\n\n2 x Repas complet(s) 26 ,30\n\nTOTAL TIC: 52,60 EUR\n\nCode TVA HT TVA TIC\n(1) 10.00 39,52 3,95 43,48\n(2) 20.00 7,60 1,52 9,12\nTOTAL HT = 47,13\n\n(B) C.B. 52,60\n\nR\u00e9glement proratis\u00e9 selon ticket initial\n\nJusti ficatif non valable\npour encaissement\n\ndis et sont donc donn\u00e9s uniquement a titre\ninformat i f\nSIRET 82892173400012 - NAF 5610A\nTVA Intracom FR7519113120\nau capital de\n\nLEO2 v2.52.096.056 - (NF525)B 0001 zV3F\nService : Manager (1)x*\nCaisse 1\nMerci & bient\u00e9t\n\n"
+                    },
+                    "RegexSiren-tes": {
+                        "siren": "828921734",
+                        "siret": "82892173400012",
+                        "codeNAF": "5610A",
+                        "tvaIntra": "FR76828921734",
+                        "warningSIREN": "",
+                        "warningTVA": ""
+                    },
+                    "RegexSiren-pad": {
+                        "siren": null,
+                        "siret": null,
+                        "codeNAF": "5610A",
+                        "tvaIntra": null,
+                        "warningSIREN": "",
+                        "warningTVA": ""
+                    },
+                    "BEiT": {
+                        "class": "ticket_carburant"
+                    },
+                    "PDF2Text": {
+                        "text": "\f"
+                    },
+                    "Ollama": {
+                        "response": "To extract relevant information from a given text, you should first identify the main topic and key details. Here's an example of how to approach it:\n\nGiven Text: \"Apple Inc. reported its quarterly earnings for Q4 2021, showing a revenue increase of 5% compared to the previous quarter. Their iPhone sales contributed to the majority of this growth.\"\n\nRelevant Information:\n- Company: Apple Inc.\n- Subject: Quarterly earnings report (Q4 2021)\n- Key Detail: Revenue increased by 5% from the previous quarter.\n- Additional Detail: Majority of revenue growth attributed to iPhone sales.\n\nPlease note that this is a general approach, and depending on your specific needs or context, you might need to extract different kinds of information from the text provided."
+                    }
+                }
+            },
+            "status": "completed",
+            "completedAt": "2024-05-03 16:09:01"
+        },
+        {
+            "name": "PDF2Text",
+            "type": "pdf2text",
+            "upstream": [
+                "FileInput"
+            ],
+            "downstream": [
+                "Output"
+            ],
+            "data": {
+                "input": {
+                    "FileInput": {
+                        "filename": "ticket_resto.pdf"
+                    }
+                },
+                "output": {
+                    "text": "\f"
+                }
+            },
+            "status": "completed",
+            "completedAt": "2024-05-03 16:08:58"
+        },
+        {
+            "name": "Tesseract",
+            "type": "tesseract",
+            "upstream": [
+                "FileInput"
+            ],
+            "downstream": [
+                "RegexSiren-tes",
+                "Output"
+            ],
+            "data": {
+                "input": {
+                    "FileInput": {
+                        "filename": "ticket_resto.pdf"
+                    }
+                },
+                "output": {
+                    "text": "MONTEROSSO\n\n7 rue Georges Bouzerait\n92120 MONTROUGE\nFrance\nTel : 01 42 53 25 23\nDate : 14/04/2023 - 16:46\nJustificatif n\u00b0 1/1 Imp. N\u00b0 6\nJ720552-6 Tick du 30/01/2023-13:38\n\nTable N\u00b05 = Couvert: 3\n\n2 x Repas complet(s) 26 ,30\n\nTOTAL TIC: 52,60 EUR\n\nCode TVA HT TVA TIC\n(1) 10.00 39,52 3,95 43,48\n(2) 20.00 7,60 1,52 9,12\nTOTAL HT = 47,13\n\n(B) C.B. 52,60\n\nR\u00e9glement proratis\u00e9 selon ticket initial\n\nJusti ficatif non valable\npour encaissement\n\ndis et sont donc donn\u00e9s uniquement a titre\ninformat i f\nSIRET 82892173400012 - NAF 5610A\nTVA Intracom FR7519113120\nau capital de\n\nLEO2 v2.52.096.056 - (NF525)B 0001 zV3F\nService : Manager (1)x*\nCaisse 1\nMerci & bient\u00e9t\n\n"
+                }
+            },
+            "status": "completed",
+            "completedAt": "2024-05-03 16:08:57"
+        },
+        {
+            "name": "RegexSiren-tes",
+            "type": "regexsiren",
+            "upstream": [
+                "Tesseract"
+            ],
+            "downstream": [
+                "Output"
+            ],
+            "data": {
+                "input": {
+                    "Tesseract": {
+                        "text": "MONTEROSSO\n\n7 rue Georges Bouzerait\n92120 MONTROUGE\nFrance\nTel : 01 42 53 25 23\nDate : 14/04/2023 - 16:46\nJustificatif n\u00b0 1/1 Imp. N\u00b0 6\nJ720552-6 Tick du 30/01/2023-13:38\n\nTable N\u00b05 = Couvert: 3\n\n2 x Repas complet(s) 26 ,30\n\nTOTAL TIC: 52,60 EUR\n\nCode TVA HT TVA TIC\n(1) 10.00 39,52 3,95 43,48\n(2) 20.00 7,60 1,52 9,12\nTOTAL HT = 47,13\n\n(B) C.B. 52,60\n\nR\u00e9glement proratis\u00e9 selon ticket initial\n\nJusti ficatif non valable\npour encaissement\n\ndis et sont donc donn\u00e9s uniquement a titre\ninformat i f\nSIRET 82892173400012 - NAF 5610A\nTVA Intracom FR7519113120\nau capital de\n\nLEO2 v2.52.096.056 - (NF525)B 0001 zV3F\nService : Manager (1)x*\nCaisse 1\nMerci & bient\u00e9t\n\n"
+                    }
+                },
+                "output": {
+                    "siren": "828921734",
+                    "siret": "82892173400012",
+                    "codeNAF": "5610A",
+                    "tvaIntra": "FR76828921734",
+                    "warningSIREN": "",
+                    "warningTVA": ""
+                }
+            },
+            "status": "completed",
+            "completedAt": "2024-05-03 16:08:57"
+        },
+        {
+            "name": "PaddleOCR",
+            "type": "paddleocr",
+            "upstream": [
+                "FileInput"
+            ],
+            "downstream": [
+                "RegexSiren-pad"
+            ],
+            "data": {
+                "input": {
+                    "FileInput": {
+                        "filename": "ticket_resto.pdf"
+                    }
+                },
+                "output": {
+                    "text": "MONTEROSSO\n7 rue Georges Bouzerait\n92120 MONTROUGE\nFrance\nTel : 01 42 53 25 23\nDate : 14/04/2023 - 16:46\nJustificatif n\" 1/1 Imp. N\" 6\nJT20552-6 Tick du 30/01/2023-13:38\nTable N'5\nCouvert: 3\n2 x Repas complet(s)\n26,30\nTOTAL\nTTC :\n52.60 EUR\nCode TVA\nTVA\nTTC\n(1) 10.00\n39,52\n3,95\n43,48\n(2) 20.00\n7,60\n1,52\n9,12\nTOTAL HT\n47,13\n(B) C.B.\n52,60\nR\u00e9glement proratis\u00e9 selon ticket initial\nJustificatif non valable\npour encaissement\nLes montants et valeurs peuvent \u00e9tre arron\ndis et sont donc donn\u00e9s uniquement a titre\ninformatif\nSIRET82892173400012-NAF 5610A\nTVA Intracom FR7519113120\nau capital de\nLE02v2.52.096.056-(NF525)B 0001 zV3F\nService : Manager (1)*\nCaisse 1\nMerci \u00e1 bient\u00f6t\n"
+                }
+            },
+            "status": "completed",
+            "completedAt": "2024-05-03 16:08:58"
+        },
+        {
+            "name": "RegexSiren-pad",
+            "type": "regexsiren",
+            "upstream": [
+                "PaddleOCR"
+            ],
+            "downstream": [
+                "Output"
+            ],
+            "data": {
+                "input": {
+                    "PaddleOCR": {
+                        "text": "MONTEROSSO\n7 rue Georges Bouzerait\n92120 MONTROUGE\nFrance\nTel : 01 42 53 25 23\nDate : 14/04/2023 - 16:46\nJustificatif n\" 1/1 Imp. N\" 6\nJT20552-6 Tick du 30/01/2023-13:38\nTable N'5\nCouvert: 3\n2 x Repas complet(s)\n26,30\nTOTAL\nTTC :\n52.60 EUR\nCode TVA\nTVA\nTTC\n(1) 10.00\n39,52\n3,95\n43,48\n(2) 20.00\n7,60\n1,52\n9,12\nTOTAL HT\n47,13\n(B) C.B.\n52,60\nR\u00e9glement proratis\u00e9 selon ticket initial\nJustificatif non valable\npour encaissement\nLes montants et valeurs peuvent \u00e9tre arron\ndis et sont donc donn\u00e9s uniquement a titre\ninformatif\nSIRET82892173400012-NAF 5610A\nTVA Intracom FR7519113120\nau capital de\nLE02v2.52.096.056-(NF525)B 0001 zV3F\nService : Manager (1)*\nCaisse 1\nMerci \u00e1 bient\u00f6t\n"
+                    }
+                },
+                "output": {
+                    "siren": null,
+                    "siret": null,
+                    "codeNAF": "5610A",
+                    "tvaIntra": null,
+                    "warningSIREN": "",
+                    "warningTVA": ""
+                }
+            },
+            "status": "completed",
+            "completedAt": "2024-05-03 16:08:58"
+        },
+        {
+            "name": "Ollama",
+            "type": "ollama",
+            "upstream": [
+                "Prompt"
+            ],
+            "downstream": [
+                "Output"
+            ],
+            "data": {
+                "input": {
+                    "Prompt": {
+                        "text": "Extract the relevant information from the following text:\n    \n    "
+                    }
+                },
+                "output": {
+                    "response": "To extract relevant information from a given text, you should first identify the main topic and key details. Here's an example of how to approach it:\n\nGiven Text: \"Apple Inc. reported its quarterly earnings for Q4 2021, showing a revenue increase of 5% compared to the previous quarter. Their iPhone sales contributed to the majority of this growth.\"\n\nRelevant Information:\n- Company: Apple Inc.\n- Subject: Quarterly earnings report (Q4 2021)\n- Key Detail: Revenue increased by 5% from the previous quarter.\n- Additional Detail: Majority of revenue growth attributed to iPhone sales.\n\nPlease note that this is a general approach, and depending on your specific needs or context, you might need to extract different kinds of information from the text provided."
+                }
+            },
+            "status": "completed",
+            "completedAt": "2024-05-03 16:09:01"
+        },
+        {
+            "name": "Prompt",
+            "type": "prompt",
+            "upstream": [],
+            "downstream": [
+                "Ollama"
+            ],
+            "data": {
+                "input": {},
+                "output": {
+                    "text": "Extract the relevant information from the following text:\n    \n    "
+                }
+            },
+            "status": "completed",
+            "completedAt": "2024-05-03 16:08:58"
+        }
+    ]
+}

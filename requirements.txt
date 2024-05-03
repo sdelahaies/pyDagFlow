@@ -6,3 +6,4 @@ PyPDF2
 PyYAML
 pdftotext
 python-dotenv
+pytest
