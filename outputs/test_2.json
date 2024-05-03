@@ -7,12 +7,13 @@
             "type": "fileinput",
             "upstream": [],
             "downstream": [
-                "PyPDF2",
-                "PaddleOCR",
-                "Tesseract",
-                "BEiT",
                 "PDF2Text",
-                "PyMuPDF"
+                "PyPDF2",
+                "Tesseract",
+                "Ollama",
+                "BEiT",
+                "PyMuPDF",
+                "PaddleOCR"
             ],
             "data": {
                 "input": {
@@ -75,12 +76,13 @@
             "name": "Output",
             "type": "output",
             "upstream": [
-                "PyPDF2",
-                "Tesseract",
-                "RegexSiren-tes",
-                "BEiT",
-                "RegexSiren-pad",
                 "PDF2Text",
+                "PyPDF2",
+                "RegexSiren-pad",
+                "RegexSiren-tes",
+                "Tesseract",
+                "Ollama",
+                "BEiT",
                 "PyMuPDF"
             ],
             "downstream": [],
@@ -114,8 +116,8 @@
                 "FileInput"
             ],
             "downstream": [
-                "RegexSiren-tes",
-                "Output"
+                "Output",
+                "RegexSiren-tes"
             ],
             "data": {
                 "input": {},
@@ -161,6 +163,22 @@
             "type": "regexsiren",
             "upstream": [
                 "PaddleOCR"
+            ],
+            "downstream": [
+                "Output"
+            ],
+            "data": {
+                "input": {},
+                "output": {}
+            },
+            "status": "pending",
+            "completedAt": null
+        },
+        {
+            "name": "Ollama",
+            "type": "ollama",
+            "upstream": [
+                "FileInput"
             ],
             "downstream": [
                 "Output"

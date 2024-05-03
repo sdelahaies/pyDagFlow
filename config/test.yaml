@@ -1,16 +1,16 @@
 name: testflow
 createdAt: 24-05-01 16:27:00
 nodes:
-  - 1: FileInput
-  - 2: BEiT
-  - 3: PyPDF2
-  - 4: PyMuPDF
-  - 5: Output
-  - 6: PDF2Text
-  - 7: Tesseract
-  - 8: RegexSiren
-  - 9: PaddleOCR
-  - 10: RegexSiren
+  - 1: FileInput,fileinput
+  - 2: BEiT,beit
+  - 3: PyPDF2,pypdf2
+  - 4: PyMuPDF,pymupdf
+  - 5: Output,output
+  - 6: PDF2Text,pdf2text
+  - 7: Tesseract,tesseract
+  - 8: RegexSiren,regexsiren
+  - 9: PaddleOCR,paddleocr
+  - 10: RegexSiren,regexsiren
 flow: 
   - 1>>2,3,4,6,7,9
   - 2,3,4,6,7>>5

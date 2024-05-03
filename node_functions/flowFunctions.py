@@ -9,7 +9,8 @@ from .q71.beit import beit
 from .q71.donut import donut
 from .q71.paddleocr import paddleocr
 from .q71.regexsiren import regexsiren
-
+from .q71.ollama import ollama
+from .q71.prompt import prompt # type: ignore
 
 
 
