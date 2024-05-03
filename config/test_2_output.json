@@ -7,12 +7,12 @@
             "type": "fileinput",
             "upstream": [],
             "downstream": [
-                "PyMuPDF",
-                "PyPDF2",
-                "Tesseract",
                 "PaddleOCR",
+                "PyPDF2",
+                "PDF2Text",
                 "BEiT",
-                "PDF2Text"
+                "PyMuPDF",
+                "Tesseract"
             ],
             "data": {
                 "input": {
@@ -23,7 +23,7 @@
                 }
             },
             "status": "completed",
-            "completedAt": "2024-05-03 16:08:56"
+            "completedAt": "2024-05-03 21:56:52"
         },
         {
             "name": "BEiT",
@@ -45,7 +45,7 @@
                 }
             },
             "status": "completed",
-            "completedAt": "2024-05-03 16:08:58"
+            "completedAt": "2024-05-03 21:56:53"
         },
         {
             "name": "PyPDF2",
@@ -67,7 +67,7 @@
                 }
             },
             "status": "completed",
-            "completedAt": "2024-05-03 16:08:56"
+            "completedAt": "2024-05-03 21:56:52"
         },
         {
             "name": "PyMuPDF",
@@ -89,29 +89,43 @@
                 }
             },
             "status": "completed",
-            "completedAt": "2024-05-03 16:08:56"
+            "completedAt": "2024-05-03 21:56:53"
         },
         {
             "name": "Output",
             "type": "output",
             "upstream": [
-                "PyMuPDF",
-                "PyPDF2",
                 "RegexSiren-tes",
+                "PyPDF2",
+                "PDF2Text",
+                "BEiT",
+                "PyMuPDF",
                 "Tesseract",
                 "Ollama",
-                "BEiT",
-                "PDF2Text",
                 "RegexSiren-pad"
             ],
             "downstream": [],
             "data": {
                 "input": {
-                    "PyMuPDF": {
-                        "text": ""
+                    "RegexSiren-pad": {
+                        "siren": null,
+                        "siret": null,
+                        "codeNAF": "5610A",
+                        "tvaIntra": null,
+                        "warningSIREN": "",
+                        "warningTVA": ""
                     },
                     "PyPDF2": {
                         "text": "\n\n"
+                    },
+                    "PDF2Text": {
+                        "text": "\f"
+                    },
+                    "BEiT": {
+                        "class": "ticket_carburant"
+                    },
+                    "PyMuPDF": {
+                        "text": ""
                     },
                     "Tesseract": {
                         "text": "MONTEROSSO\n\n7 rue Georges Bouzerait\n92120 MONTROUGE\nFrance\nTel : 01 42 53 25 23\nDate : 14/04/2023 - 16:46\nJustificatif n\u00b0 1/1 Imp. N\u00b0 6\nJ720552-6 Tick du 30/01/2023-13:38\n\nTable N\u00b05 = Couvert: 3\n\n2 x Repas complet(s) 26 ,30\n\nTOTAL TIC: 52,60 EUR\n\nCode TVA HT TVA TIC\n(1) 10.00 39,52 3,95 43,48\n(2) 20.00 7,60 1,52 9,12\nTOTAL HT = 47,13\n\n(B) C.B. 52,60\n\nR\u00e9glement proratis\u00e9 selon ticket initial\n\nJusti ficatif non valable\npour encaissement\n\ndis et sont donc donn\u00e9s uniquement a titre\ninformat i f\nSIRET 82892173400012 - NAF 5610A\nTVA Intracom FR7519113120\nau capital de\n\nLEO2 v2.52.096.056 - (NF525)B 0001 zV3F\nService : Manager (1)x*\nCaisse 1\nMerci & bient\u00e9t\n\n"
@@ -124,30 +138,30 @@
                         "warningSIREN": "",
                         "warningTVA": ""
                     },
-                    "RegexSiren-pad": {
-                        "siren": null,
-                        "siret": null,
-                        "codeNAF": "5610A",
-                        "tvaIntra": null,
-                        "warningSIREN": "",
-                        "warningTVA": ""
-                    },
-                    "BEiT": {
-                        "class": "ticket_carburant"
-                    },
-                    "PDF2Text": {
-                        "text": "\f"
-                    },
                     "Ollama": {
-                        "response": "To extract relevant information from a given text, you should first identify the main topic and key details. Here's an example of how to approach it:\n\nGiven Text: \"Apple Inc. reported its quarterly earnings for Q4 2021, showing a revenue increase of 5% compared to the previous quarter. Their iPhone sales contributed to the majority of this growth.\"\n\nRelevant Information:\n- Company: Apple Inc.\n- Subject: Quarterly earnings report (Q4 2021)\n- Key Detail: Revenue increased by 5% from the previous quarter.\n- Additional Detail: Majority of revenue growth attributed to iPhone sales.\n\nPlease note that this is a general approach, and depending on your specific needs or context, you might need to extract different kinds of information from the text provided."
+                        "response": "To extract relevant information from a given text, you'll need to identify key elements such as names, dates, locations, numbers, and main topics or themes. Since there is no specific text provided in your request, I can guide you on how this could be done for general purposes:\n\n\n1. Identify the subject matter of the text.\n2. Look for proper nouns that indicate names (people, places, organizations).\n3. Search for any dates or time references.\n4. Find numbers and statistics mentioned in the text.\n5. Note down any specific events, actions, or occurrences described.\n6. Pay attention to repeated concepts or ideas which might signify central themes.\n7. Determine if there are any conclusions or opinions stated that could be relevant.\n\n\nOnce you have identified these elements in a text, they can be organized into structured data for analysis and further use."
                     }
                 },
                 "output": {
-                    "PyMuPDF": {
-                        "text": ""
+                    "RegexSiren-pad": {
+                        "siren": null,
+                        "siret": null,
+                        "codeNAF": "5610A",
+                        "tvaIntra": null,
+                        "warningSIREN": "",
+                        "warningTVA": ""
                     },
                     "PyPDF2": {
                         "text": "\n\n"
+                    },
+                    "PDF2Text": {
+                        "text": "\f"
+                    },
+                    "BEiT": {
+                        "class": "ticket_carburant"
+                    },
+                    "PyMuPDF": {
+                        "text": ""
                     },
                     "Tesseract": {
                         "text": "MONTEROSSO\n\n7 rue Georges Bouzerait\n92120 MONTROUGE\nFrance\nTel : 01 42 53 25 23\nDate : 14/04/2023 - 16:46\nJustificatif n\u00b0 1/1 Imp. N\u00b0 6\nJ720552-6 Tick du 30/01/2023-13:38\n\nTable N\u00b05 = Couvert: 3\n\n2 x Repas complet(s) 26 ,30\n\nTOTAL TIC: 52,60 EUR\n\nCode TVA HT TVA TIC\n(1) 10.00 39,52 3,95 43,48\n(2) 20.00 7,60 1,52 9,12\nTOTAL HT = 47,13\n\n(B) C.B. 52,60\n\nR\u00e9glement proratis\u00e9 selon ticket initial\n\nJusti ficatif non valable\npour encaissement\n\ndis et sont donc donn\u00e9s uniquement a titre\ninformat i f\nSIRET 82892173400012 - NAF 5610A\nTVA Intracom FR7519113120\nau capital de\n\nLEO2 v2.52.096.056 - (NF525)B 0001 zV3F\nService : Manager (1)x*\nCaisse 1\nMerci & bient\u00e9t\n\n"
@@ -160,27 +174,13 @@
                         "warningSIREN": "",
                         "warningTVA": ""
                     },
-                    "RegexSiren-pad": {
-                        "siren": null,
-                        "siret": null,
-                        "codeNAF": "5610A",
-                        "tvaIntra": null,
-                        "warningSIREN": "",
-                        "warningTVA": ""
-                    },
-                    "BEiT": {
-                        "class": "ticket_carburant"
-                    },
-                    "PDF2Text": {
-                        "text": "\f"
-                    },
                     "Ollama": {
-                        "response": "To extract relevant information from a given text, you should first identify the main topic and key details. Here's an example of how to approach it:\n\nGiven Text: \"Apple Inc. reported its quarterly earnings for Q4 2021, showing a revenue increase of 5% compared to the previous quarter. Their iPhone sales contributed to the majority of this growth.\"\n\nRelevant Information:\n- Company: Apple Inc.\n- Subject: Quarterly earnings report (Q4 2021)\n- Key Detail: Revenue increased by 5% from the previous quarter.\n- Additional Detail: Majority of revenue growth attributed to iPhone sales.\n\nPlease note that this is a general approach, and depending on your specific needs or context, you might need to extract different kinds of information from the text provided."
+                        "response": "To extract relevant information from a given text, you'll need to identify key elements such as names, dates, locations, numbers, and main topics or themes. Since there is no specific text provided in your request, I can guide you on how this could be done for general purposes:\n\n\n1. Identify the subject matter of the text.\n2. Look for proper nouns that indicate names (people, places, organizations).\n3. Search for any dates or time references.\n4. Find numbers and statistics mentioned in the text.\n5. Note down any specific events, actions, or occurrences described.\n6. Pay attention to repeated concepts or ideas which might signify central themes.\n7. Determine if there are any conclusions or opinions stated that could be relevant.\n\n\nOnce you have identified these elements in a text, they can be organized into structured data for analysis and further use."
                     }
                 }
             },
             "status": "completed",
-            "completedAt": "2024-05-03 16:09:01"
+            "completedAt": "2024-05-03 21:56:55"
         },
         {
             "name": "PDF2Text",
@@ -202,7 +202,7 @@
                 }
             },
             "status": "completed",
-            "completedAt": "2024-05-03 16:08:58"
+            "completedAt": "2024-05-03 21:56:52"
         },
         {
             "name": "Tesseract",
@@ -211,8 +211,8 @@
                 "FileInput"
             ],
             "downstream": [
-                "RegexSiren-tes",
-                "Output"
+                "Output",
+                "RegexSiren-tes"
             ],
             "data": {
                 "input": {
@@ -225,7 +225,7 @@
                 }
             },
             "status": "completed",
-            "completedAt": "2024-05-03 16:08:57"
+            "completedAt": "2024-05-03 21:56:53"
         },
         {
             "name": "RegexSiren-tes",
@@ -252,7 +252,7 @@
                 }
             },
             "status": "completed",
-            "completedAt": "2024-05-03 16:08:57"
+            "completedAt": "2024-05-03 21:56:53"
         },
         {
             "name": "PaddleOCR",
@@ -274,7 +274,7 @@
                 }
             },
             "status": "completed",
-            "completedAt": "2024-05-03 16:08:58"
+            "completedAt": "2024-05-03 21:56:52"
         },
         {
             "name": "RegexSiren-pad",
@@ -301,7 +301,7 @@
                 }
             },
             "status": "completed",
-            "completedAt": "2024-05-03 16:08:58"
+            "completedAt": "2024-05-03 21:56:52"
         },
         {
             "name": "Ollama",
@@ -319,11 +319,11 @@
                     }
                 },
                 "output": {
-                    "response": "To extract relevant information from a given text, you should first identify the main topic and key details. Here's an example of how to approach it:\n\nGiven Text: \"Apple Inc. reported its quarterly earnings for Q4 2021, showing a revenue increase of 5% compared to the previous quarter. Their iPhone sales contributed to the majority of this growth.\"\n\nRelevant Information:\n- Company: Apple Inc.\n- Subject: Quarterly earnings report (Q4 2021)\n- Key Detail: Revenue increased by 5% from the previous quarter.\n- Additional Detail: Majority of revenue growth attributed to iPhone sales.\n\nPlease note that this is a general approach, and depending on your specific needs or context, you might need to extract different kinds of information from the text provided."
+                    "response": "To extract relevant information from a given text, you'll need to identify key elements such as names, dates, locations, numbers, and main topics or themes. Since there is no specific text provided in your request, I can guide you on how this could be done for general purposes:\n\n\n1. Identify the subject matter of the text.\n2. Look for proper nouns that indicate names (people, places, organizations).\n3. Search for any dates or time references.\n4. Find numbers and statistics mentioned in the text.\n5. Note down any specific events, actions, or occurrences described.\n6. Pay attention to repeated concepts or ideas which might signify central themes.\n7. Determine if there are any conclusions or opinions stated that could be relevant.\n\n\nOnce you have identified these elements in a text, they can be organized into structured data for analysis and further use."
                 }
             },
             "status": "completed",
-            "completedAt": "2024-05-03 16:09:01"
+            "completedAt": "2024-05-03 21:56:55"
         },
         {
             "name": "Prompt",
@@ -339,7 +339,7 @@
                 }
             },
             "status": "completed",
-            "completedAt": "2024-05-03 16:08:58"
+            "completedAt": "2024-05-03 21:56:53"
         }
     ]
 }

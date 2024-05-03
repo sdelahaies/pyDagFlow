@@ -33,7 +33,7 @@ def run_workflow(dto_path, verbose=True):
 
 if __name__ == "__main__":
     if len(sys.argv) <= 1:
-        exit("You need at least 1 argument: python run-flow.py <path-to-dto> <verbose>")
+        exit("You need at least 2 argument: python run-flow.py <path-to-dto> <verbose>")
 
     dto_path=sys.argv[1]
     if len(sys.argv) > 2:

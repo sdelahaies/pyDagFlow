@@ -5,6 +5,16 @@ from pubsub import pub
 
 class Node:
     def __init__(self, node_data,workflow):
+        """
+        Initialize a Node object.
+
+        Args:
+            node_data: A dictionary containing information about the node.
+            workflow: The Workflow object to which the node belongs.
+
+        Returns:
+            None.
+        """
         self.name = node_data['name']
         self.type = node_data['type']
         self.upstream = node_data['upstream']
@@ -18,6 +28,15 @@ class Node:
         pub.subscribe(self.listener, self.name)
 
     def listener(self, arg):
+        """
+        Listener function for the node to process tasks based on upstream nodes.
+
+        Args:
+            arg: An argument passed to the listener function.
+
+        Returns:
+            None.
+        """
         # Check if all upstream nodes are completed
         for upstream_node in self.upstream:
             if upstream_node not in self.completed_upstreams:
@@ -70,4 +89,13 @@ class Node:
             pub.sendMessage(downstream_node, arg=self.data)
 
     def mark_upstream_completed(self, upstream_node):
+        """
+        Mark an upstream node as completed for the current node.
+
+        Args:
+            upstream_node: The name of the upstream node that is completed.
+
+        Returns:
+            None.
+        """
         self.completed_upstreams.add(upstream_node)

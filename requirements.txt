@@ -3,7 +3,10 @@ requests
 matplotlib
 networkx
 PyPDF2
+PyMuPDF
 PyYAML
 pdftotext
 python-dotenv
 pytest
+sphinx
+sphinx-rtd-theme
