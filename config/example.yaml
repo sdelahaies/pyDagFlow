@@ -1,13 +1,13 @@
 name: testflow
 createdAt: 24-05-01 16:27:00
 nodes:
-  - 1: User
-  - 2: Username
-  - 3: Phone
-  - 4: Customer
-  - 5: Product
-  - 6: Order
-  - 7: Purchase
+  - 1: User,user
+  - 2: Username,username
+  - 3: Phone,phone
+  - 4: Customer,customer
+  - 5: Product,product
+  - 6: Order,order
+  - 7: Purchase,purchase
 flow: 
   - 1>>2,3
   - 2,3>>4

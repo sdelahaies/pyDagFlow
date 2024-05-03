@@ -95,7 +95,7 @@ def purchase(input:dict) -> dict:
 then the workflow can be processed using the following command:
 
 ```bash
-python run-flow.py ./dto/exampleDTO.json
+python main.py ./config/example.yaml
 ```
 functions (nodes) can be found in `functions` folder, aditional functions can be added to the `functions` folder and imported in the `flowFunctions.py` script.
 
