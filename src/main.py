@@ -1,3 +1,17 @@
+"""_summary_ 
+
+_description_
+
+:param _param_: _description_
+
+Main function to run the workflow from a yaml file or a json file. The function will generate the json workflow from the yaml file if needed, then run the workflow and return the final dto.
+The final dto will be printed and saved in a file with the same name as the input file but with the extension _output.json
+
+
+:return: _description_
+:rtype: _type_
+"""
+
 from workflow import Workflow
 from dotenv import load_dotenv
 from yaml2json_workflow import generate_json_workflow

@@ -8,5 +8,6 @@ PyYAML
 pdftotext
 python-dotenv
 pytest
+graphviz
 sphinx
 sphinx-rtd-theme
