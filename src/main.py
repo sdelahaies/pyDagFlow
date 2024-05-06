@@ -20,15 +20,20 @@ import json
 import sys
 from datetime import datetime
 
-load_dotenv() 
+load_dotenv("../.env") 
 
 # write the script below if __main__ block as a function
-def run_workflow(dto_path, verbose=True):
-    if dto_path.endswith('.yaml'):
-        dto=generate_json_workflow(dto_path, verbose=verbose)
-    else:
-        with open(dto_path) as f:
-            dto = json.load(f)
+def run_workflow(dto_path=None, dto=None, verbose=True):
+    if dto is None:
+        if dto_path is None:
+            raise Exception("You need to provide a dto_path or a dto")
+            #return
+        if dto_path.endswith('.yaml'):
+            dto=generate_json_workflow(dto_path, verbose=verbose)
+        else:
+            with open(dto_path) as f:
+                dto = json.load(f)
+
 
     workflow = Workflow(dto,verbose=verbose)
 
@@ -46,7 +51,7 @@ def run_workflow(dto_path, verbose=True):
 
 
 if __name__ == "__main__":
-    if len(sys.argv) <= 1:
+    if len(sys.argv) <= 2:
         exit("You need at least 2 argument: python run-flow.py <path-to-dto> <verbose>")
 
     dto_path=sys.argv[1]

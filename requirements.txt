@@ -11,3 +11,6 @@ pytest
 graphviz
 sphinx
 sphinx-rtd-theme
+flask
+flask-cors
+Werkzeug
