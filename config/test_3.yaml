@@ -1,0 +1,19 @@
+name: testflow
+createdAt: 24-05-01 16:27:00
+nodes: 
+  - 1: Main,main
+  - 2: Parse,parse
+  - 3: Cleanup,cleanup
+  - 4: Init,init
+  - 5: Execute,execute
+  - 6: Make_string,make_string
+  - 7: Compare,compare
+  - 8: Printf,printf
+flow:
+  - 1>>2,3,4,8
+  - 2>>5
+  - 4,5>>6
+  - 5>>7
+  - 1,5>>8
+
+

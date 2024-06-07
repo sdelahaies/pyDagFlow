@@ -1,0 +1,345 @@
+{
+    "name": "testflow",
+    "createdAt": "24-05-01 16:27:00",
+    "workflow": [
+        {
+            "name": "FileInput",
+            "type": "fileinput",
+            "upstream": [],
+            "downstream": [
+                "Tesseract",
+                "BEiT",
+                "PyPDF2",
+                "PDF2Text",
+                "PyMuPDF",
+                "PaddleOCR"
+            ],
+            "data": {
+                "input": {
+                    "filename": "ticket_resto.pdf"
+                },
+                "output": {
+                    "filename": "ticket_resto.pdf"
+                }
+            },
+            "status": "completed",
+            "completedAt": "2024-05-03 22:22:49"
+        },
+        {
+            "name": "BEiT",
+            "type": "beit",
+            "upstream": [
+                "FileInput"
+            ],
+            "downstream": [
+                "Output"
+            ],
+            "data": {
+                "input": {
+                    "FileInput": {
+                        "filename": "ticket_resto.pdf"
+                    }
+                },
+                "output": {
+                    "class": "ticket_carburant"
+                }
+            },
+            "status": "completed",
+            "completedAt": "2024-05-03 22:22:50"
+        },
+        {
+            "name": "PyPDF2",
+            "type": "pypdf2",
+            "upstream": [
+                "FileInput"
+            ],
+            "downstream": [
+                "Output"
+            ],
+            "data": {
+                "input": {
+                    "FileInput": {
+                        "filename": "ticket_resto.pdf"
+                    }
+                },
+                "output": {
+                    "text": "\n\n"
+                }
+            },
+            "status": "completed",
+            "completedAt": "2024-05-03 22:22:50"
+        },
+        {
+            "name": "PyMuPDF",
+            "type": "pymupdf",
+            "upstream": [
+                "FileInput"
+            ],
+            "downstream": [
+                "Output"
+            ],
+            "data": {
+                "input": {
+                    "FileInput": {
+                        "filename": "ticket_resto.pdf"
+                    }
+                },
+                "output": {
+                    "text": ""
+                }
+            },
+            "status": "completed",
+            "completedAt": "2024-05-03 22:22:50"
+        },
+        {
+            "name": "Output",
+            "type": "output",
+            "upstream": [
+                "Tesseract",
+                "Ollama",
+                "BEiT",
+                "PyPDF2",
+                "PDF2Text",
+                "RegexSiren-tes",
+                "PyMuPDF",
+                "RegexSiren-pad"
+            ],
+            "downstream": [],
+            "data": {
+                "input": {
+                    "Tesseract": {
+                        "text": "MONTEROSSO\n\n7 rue Georges Bouzerait\n92120 MONTROUGE\nFrance\nTel : 01 42 53 25 23\nDate : 14/04/2023 - 16:46\nJustificatif n\u00b0 1/1 Imp. N\u00b0 6\nJ720552-6 Tick du 30/01/2023-13:38\n\nTable N\u00b05 = Couvert: 3\n\n2 x Repas complet(s) 26 ,30\n\nTOTAL TIC: 52,60 EUR\n\nCode TVA HT TVA TIC\n(1) 10.00 39,52 3,95 43,48\n(2) 20.00 7,60 1,52 9,12\nTOTAL HT = 47,13\n\n(B) C.B. 52,60\n\nR\u00e9glement proratis\u00e9 selon ticket initial\n\nJusti ficatif non valable\npour encaissement\n\ndis et sont donc donn\u00e9s uniquement a titre\ninformat i f\nSIRET 82892173400012 - NAF 5610A\nTVA Intracom FR7519113120\nau capital de\n\nLEO2 v2.52.096.056 - (NF525)B 0001 zV3F\nService : Manager (1)x*\nCaisse 1\nMerci & bient\u00e9t\n\n"
+                    },
+                    "RegexSiren-tes": {
+                        "siren": "828921734",
+                        "siret": "82892173400012",
+                        "codeNAF": "5610A",
+                        "tvaIntra": "FR76828921734",
+                        "warningSIREN": "",
+                        "warningTVA": ""
+                    },
+                    "BEiT": {
+                        "class": "ticket_carburant"
+                    },
+                    "PyPDF2": {
+                        "text": "\n\n"
+                    },
+                    "PDF2Text": {
+                        "text": "\f"
+                    },
+                    "PyMuPDF": {
+                        "text": ""
+                    },
+                    "RegexSiren-pad": {
+                        "siren": null,
+                        "siret": null,
+                        "codeNAF": "5610A",
+                        "tvaIntra": null,
+                        "warningSIREN": "",
+                        "warningTVA": ""
+                    },
+                    "Ollama": {
+                        "response": "To extract relevant information from a given text, I would need to see the specific content of that text. However, I can guide you on how to approach this task by identifying key components such as main subjects, important facts, figures, and any actionable data points mentioned in the text. Here's an example process using hypothetical text:\n\n\nGiven Text Example: \"The Acme Corporation reported a 20% increase in quarterly revenue to $15 million compared to the previous quarter's $12.5 million.\"\n\n\nFrom this text, relevant information extraction would include:\n\n- Subject: Acme Corporation\n\n- Main event: Reported a 20% increase in quarterly revenue\n\n- Financial figures: Increased from $12.5 million to $15 million\n\n- Specific timeframe: Compared to the previous quarter\n\n\nThis approach can be applied generally, ensuring that you identify and summarize key points relevant to your specific context or objective."
+                    }
+                },
+                "output": {
+                    "Tesseract": {
+                        "text": "MONTEROSSO\n\n7 rue Georges Bouzerait\n92120 MONTROUGE\nFrance\nTel : 01 42 53 25 23\nDate : 14/04/2023 - 16:46\nJustificatif n\u00b0 1/1 Imp. N\u00b0 6\nJ720552-6 Tick du 30/01/2023-13:38\n\nTable N\u00b05 = Couvert: 3\n\n2 x Repas complet(s) 26 ,30\n\nTOTAL TIC: 52,60 EUR\n\nCode TVA HT TVA TIC\n(1) 10.00 39,52 3,95 43,48\n(2) 20.00 7,60 1,52 9,12\nTOTAL HT = 47,13\n\n(B) C.B. 52,60\n\nR\u00e9glement proratis\u00e9 selon ticket initial\n\nJusti ficatif non valable\npour encaissement\n\ndis et sont donc donn\u00e9s uniquement a titre\ninformat i f\nSIRET 82892173400012 - NAF 5610A\nTVA Intracom FR7519113120\nau capital de\n\nLEO2 v2.52.096.056 - (NF525)B 0001 zV3F\nService : Manager (1)x*\nCaisse 1\nMerci & bient\u00e9t\n\n"
+                    },
+                    "RegexSiren-tes": {
+                        "siren": "828921734",
+                        "siret": "82892173400012",
+                        "codeNAF": "5610A",
+                        "tvaIntra": "FR76828921734",
+                        "warningSIREN": "",
+                        "warningTVA": ""
+                    },
+                    "BEiT": {
+                        "class": "ticket_carburant"
+                    },
+                    "PyPDF2": {
+                        "text": "\n\n"
+                    },
+                    "PDF2Text": {
+                        "text": "\f"
+                    },
+                    "PyMuPDF": {
+                        "text": ""
+                    },
+                    "RegexSiren-pad": {
+                        "siren": null,
+                        "siret": null,
+                        "codeNAF": "5610A",
+                        "tvaIntra": null,
+                        "warningSIREN": "",
+                        "warningTVA": ""
+                    },
+                    "Ollama": {
+                        "response": "To extract relevant information from a given text, I would need to see the specific content of that text. However, I can guide you on how to approach this task by identifying key components such as main subjects, important facts, figures, and any actionable data points mentioned in the text. Here's an example process using hypothetical text:\n\n\nGiven Text Example: \"The Acme Corporation reported a 20% increase in quarterly revenue to $15 million compared to the previous quarter's $12.5 million.\"\n\n\nFrom this text, relevant information extraction would include:\n\n- Subject: Acme Corporation\n\n- Main event: Reported a 20% increase in quarterly revenue\n\n- Financial figures: Increased from $12.5 million to $15 million\n\n- Specific timeframe: Compared to the previous quarter\n\n\nThis approach can be applied generally, ensuring that you identify and summarize key points relevant to your specific context or objective."
+                    }
+                }
+            },
+            "status": "completed",
+            "completedAt": "2024-05-03 22:22:54"
+        },
+        {
+            "name": "PDF2Text",
+            "type": "pdf2text",
+            "upstream": [
+                "FileInput"
+            ],
+            "downstream": [
+                "Output"
+            ],
+            "data": {
+                "input": {
+                    "FileInput": {
+                        "filename": "ticket_resto.pdf"
+                    }
+                },
+                "output": {
+                    "text": "\f"
+                }
+            },
+            "status": "completed",
+            "completedAt": "2024-05-03 22:22:50"
+        },
+        {
+            "name": "Tesseract",
+            "type": "tesseract",
+            "upstream": [
+                "FileInput"
+            ],
+            "downstream": [
+                "Output",
+                "RegexSiren-tes"
+            ],
+            "data": {
+                "input": {
+                    "FileInput": {
+                        "filename": "ticket_resto.pdf"
+                    }
+                },
+                "output": {
+                    "text": "MONTEROSSO\n\n7 rue Georges Bouzerait\n92120 MONTROUGE\nFrance\nTel : 01 42 53 25 23\nDate : 14/04/2023 - 16:46\nJustificatif n\u00b0 1/1 Imp. N\u00b0 6\nJ720552-6 Tick du 30/01/2023-13:38\n\nTable N\u00b05 = Couvert: 3\n\n2 x Repas complet(s) 26 ,30\n\nTOTAL TIC: 52,60 EUR\n\nCode TVA HT TVA TIC\n(1) 10.00 39,52 3,95 43,48\n(2) 20.00 7,60 1,52 9,12\nTOTAL HT = 47,13\n\n(B) C.B. 52,60\n\nR\u00e9glement proratis\u00e9 selon ticket initial\n\nJusti ficatif non valable\npour encaissement\n\ndis et sont donc donn\u00e9s uniquement a titre\ninformat i f\nSIRET 82892173400012 - NAF 5610A\nTVA Intracom FR7519113120\nau capital de\n\nLEO2 v2.52.096.056 - (NF525)B 0001 zV3F\nService : Manager (1)x*\nCaisse 1\nMerci & bient\u00e9t\n\n"
+                }
+            },
+            "status": "completed",
+            "completedAt": "2024-05-03 22:22:49"
+        },
+        {
+            "name": "RegexSiren-tes",
+            "type": "regexsiren",
+            "upstream": [
+                "Tesseract"
+            ],
+            "downstream": [
+                "Output"
+            ],
+            "data": {
+                "input": {
+                    "Tesseract": {
+                        "text": "MONTEROSSO\n\n7 rue Georges Bouzerait\n92120 MONTROUGE\nFrance\nTel : 01 42 53 25 23\nDate : 14/04/2023 - 16:46\nJustificatif n\u00b0 1/1 Imp. N\u00b0 6\nJ720552-6 Tick du 30/01/2023-13:38\n\nTable N\u00b05 = Couvert: 3\n\n2 x Repas complet(s) 26 ,30\n\nTOTAL TIC: 52,60 EUR\n\nCode TVA HT TVA TIC\n(1) 10.00 39,52 3,95 43,48\n(2) 20.00 7,60 1,52 9,12\nTOTAL HT = 47,13\n\n(B) C.B. 52,60\n\nR\u00e9glement proratis\u00e9 selon ticket initial\n\nJusti ficatif non valable\npour encaissement\n\ndis et sont donc donn\u00e9s uniquement a titre\ninformat i f\nSIRET 82892173400012 - NAF 5610A\nTVA Intracom FR7519113120\nau capital de\n\nLEO2 v2.52.096.056 - (NF525)B 0001 zV3F\nService : Manager (1)x*\nCaisse 1\nMerci & bient\u00e9t\n\n"
+                    }
+                },
+                "output": {
+                    "siren": "828921734",
+                    "siret": "82892173400012",
+                    "codeNAF": "5610A",
+                    "tvaIntra": "FR76828921734",
+                    "warningSIREN": "",
+                    "warningTVA": ""
+                }
+            },
+            "status": "completed",
+            "completedAt": "2024-05-03 22:22:49"
+        },
+        {
+            "name": "PaddleOCR",
+            "type": "paddleocr",
+            "upstream": [
+                "FileInput"
+            ],
+            "downstream": [
+                "RegexSiren-pad"
+            ],
+            "data": {
+                "input": {
+                    "FileInput": {
+                        "filename": "ticket_resto.pdf"
+                    }
+                },
+                "output": {
+                    "text": "MONTEROSSO\n7 rue Georges Bouzerait\n92120 MONTROUGE\nFrance\nTel : 01 42 53 25 23\nDate : 14/04/2023 - 16:46\nJustificatif n\" 1/1 Imp. N\" 6\nJT20552-6 Tick du 30/01/2023-13:38\nTable N'5\nCouvert: 3\n2 x Repas complet(s)\n26,30\nTOTAL\nTTC :\n52.60 EUR\nCode TVA\nTVA\nTTC\n(1) 10.00\n39,52\n3,95\n43,48\n(2) 20.00\n7,60\n1,52\n9,12\nTOTAL HT\n47,13\n(B) C.B.\n52,60\nR\u00e9glement proratis\u00e9 selon ticket initial\nJustificatif non valable\npour encaissement\nLes montants et valeurs peuvent \u00e9tre arron\ndis et sont donc donn\u00e9s uniquement a titre\ninformatif\nSIRET82892173400012-NAF 5610A\nTVA Intracom FR7519113120\nau capital de\nLE02v2.52.096.056-(NF525)B 0001 zV3F\nService : Manager (1)*\nCaisse 1\nMerci \u00e1 bient\u00f6t\n"
+                }
+            },
+            "status": "completed",
+            "completedAt": "2024-05-03 22:22:50"
+        },
+        {
+            "name": "RegexSiren-pad",
+            "type": "regexsiren",
+            "upstream": [
+                "PaddleOCR"
+            ],
+            "downstream": [
+                "Output"
+            ],
+            "data": {
+                "input": {
+                    "PaddleOCR": {
+                        "text": "MONTEROSSO\n7 rue Georges Bouzerait\n92120 MONTROUGE\nFrance\nTel : 01 42 53 25 23\nDate : 14/04/2023 - 16:46\nJustificatif n\" 1/1 Imp. N\" 6\nJT20552-6 Tick du 30/01/2023-13:38\nTable N'5\nCouvert: 3\n2 x Repas complet(s)\n26,30\nTOTAL\nTTC :\n52.60 EUR\nCode TVA\nTVA\nTTC\n(1) 10.00\n39,52\n3,95\n43,48\n(2) 20.00\n7,60\n1,52\n9,12\nTOTAL HT\n47,13\n(B) C.B.\n52,60\nR\u00e9glement proratis\u00e9 selon ticket initial\nJustificatif non valable\npour encaissement\nLes montants et valeurs peuvent \u00e9tre arron\ndis et sont donc donn\u00e9s uniquement a titre\ninformatif\nSIRET82892173400012-NAF 5610A\nTVA Intracom FR7519113120\nau capital de\nLE02v2.52.096.056-(NF525)B 0001 zV3F\nService : Manager (1)*\nCaisse 1\nMerci \u00e1 bient\u00f6t\n"
+                    }
+                },
+                "output": {
+                    "siren": null,
+                    "siret": null,
+                    "codeNAF": "5610A",
+                    "tvaIntra": null,
+                    "warningSIREN": "",
+                    "warningTVA": ""
+                }
+            },
+            "status": "completed",
+            "completedAt": "2024-05-03 22:22:50"
+        },
+        {
+            "name": "Ollama",
+            "type": "ollama",
+            "upstream": [
+                "Prompt"
+            ],
+            "downstream": [
+                "Output"
+            ],
+            "data": {
+                "input": {
+                    "Prompt": {
+                        "text": "Extract the relevant information from the following text:\n    \n    "
+                    }
+                },
+                "output": {
+                    "response": "To extract relevant information from a given text, I would need to see the specific content of that text. However, I can guide you on how to approach this task by identifying key components such as main subjects, important facts, figures, and any actionable data points mentioned in the text. Here's an example process using hypothetical text:\n\n\nGiven Text Example: \"The Acme Corporation reported a 20% increase in quarterly revenue to $15 million compared to the previous quarter's $12.5 million.\"\n\n\nFrom this text, relevant information extraction would include:\n\n- Subject: Acme Corporation\n\n- Main event: Reported a 20% increase in quarterly revenue\n\n- Financial figures: Increased from $12.5 million to $15 million\n\n- Specific timeframe: Compared to the previous quarter\n\n\nThis approach can be applied generally, ensuring that you identify and summarize key points relevant to your specific context or objective."
+                }
+            },
+            "status": "completed",
+            "completedAt": "2024-05-03 22:22:54"
+        },
+        {
+            "name": "Prompt",
+            "type": "prompt",
+            "upstream": [],
+            "downstream": [
+                "Ollama"
+            ],
+            "data": {
+                "input": {},
+                "output": {
+                    "text": "Extract the relevant information from the following text:\n    \n    "
+                }
+            },
+            "status": "completed",
+            "completedAt": "2024-05-03 22:22:50"
+        }
+    ]
+}

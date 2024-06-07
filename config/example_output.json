@@ -1,0 +1,173 @@
+{
+    "name": "testflow",
+    "createdAt": "24-05-01 16:27:00",
+    "workflow": [
+        {
+            "name": "User",
+            "type": "user",
+            "upstream": [],
+            "downstream": [
+                "Phone",
+                "Username"
+            ],
+            "data": {
+                "input": {
+                    "name": "John Doe",
+                    "phone": "123-456-7890",
+                    "email": "john.doe@gmail.com"
+                },
+                "output": {
+                    "name": "John Doe",
+                    "phone": "123-456-7890",
+                    "email": "john.doe@gmail.com"
+                }
+            },
+            "status": "completed",
+            "completedAt": "2024-05-05 08:46:44"
+        },
+        {
+            "name": "Username",
+            "type": "username",
+            "upstream": [
+                "User"
+            ],
+            "downstream": [
+                "Customer"
+            ],
+            "data": {
+                "input": {
+                    "User": {
+                        "name": "John Doe",
+                        "phone": "123-456-7890",
+                        "email": "john.doe@gmail.com"
+                    }
+                },
+                "output": "john.doe"
+            },
+            "status": "completed",
+            "completedAt": "2024-05-05 08:46:44"
+        },
+        {
+            "name": "Phone",
+            "type": "phone",
+            "upstream": [
+                "User"
+            ],
+            "downstream": [
+                "Customer"
+            ],
+            "data": {
+                "input": {
+                    "User": {
+                        "name": "John Doe",
+                        "phone": "123-456-7890",
+                        "email": "john.doe@gmail.com"
+                    }
+                },
+                "output": "123"
+            },
+            "status": "completed",
+            "completedAt": "2024-05-05 08:46:44"
+        },
+        {
+            "name": "Customer",
+            "type": "customer",
+            "upstream": [
+                "Phone",
+                "Username"
+            ],
+            "downstream": [
+                "Order"
+            ],
+            "data": {
+                "input": {
+                    "Phone": "123",
+                    "Username": "john.doe"
+                },
+                "output": {
+                    "username": "john.doe",
+                    "country_code": "123"
+                }
+            },
+            "status": "completed",
+            "completedAt": "2024-05-05 08:46:44"
+        },
+        {
+            "name": "Product",
+            "type": "product",
+            "upstream": [],
+            "downstream": [
+                "Order"
+            ],
+            "data": {
+                "input": {
+                    "product": "beer",
+                    "price": 10
+                },
+                "output": {
+                    "product": "beer",
+                    "price": 10
+                }
+            },
+            "status": "completed",
+            "completedAt": "2024-05-05 08:46:44"
+        },
+        {
+            "name": "Order",
+            "type": "order",
+            "upstream": [
+                "Product",
+                "Customer"
+            ],
+            "downstream": [
+                "Purchase"
+            ],
+            "data": {
+                "input": {
+                    "Customer": {
+                        "username": "john.doe",
+                        "country_code": "123"
+                    },
+                    "Product": {
+                        "product": "beer",
+                        "price": 10
+                    }
+                },
+                "output": {
+                    "customer": "john.doe",
+                    "product": "beer",
+                    "price": 10,
+                    "status": "pending"
+                }
+            },
+            "status": "completed",
+            "completedAt": "2024-05-05 08:46:44"
+        },
+        {
+            "name": "Purchase",
+            "type": "purchase",
+            "upstream": [
+                "Order"
+            ],
+            "downstream": [],
+            "data": {
+                "input": {
+                    "Order": {
+                        "customer": "john.doe",
+                        "product": "beer",
+                        "price": 10,
+                        "status": "pending"
+                    }
+                },
+                "output": {
+                    "customer": "john.doe",
+                    "product": "beer",
+                    "price": 10,
+                    "status": "completed"
+                }
+            },
+            "status": "completed",
+            "completedAt": "2024-05-05 08:46:44"
+        }
+    ]
+}

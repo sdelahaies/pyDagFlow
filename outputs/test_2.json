@@ -1,0 +1,194 @@
+{
+    "name": "testflow",
+    "createdAt": "24-05-01 16:27:00",
+    "workflow": [
+        {
+            "name": "FileInput",
+            "type": "fileinput",
+            "upstream": [],
+            "downstream": [
+                "PDF2Text",
+                "PyPDF2",
+                "Tesseract",
+                "Ollama",
+                "BEiT",
+                "PyMuPDF",
+                "PaddleOCR"
+            ],
+            "data": {
+                "input": {
+                    "filename": "ticket_resto.pdf"
+                },
+                "output": {}
+            },
+            "status": "pending",
+            "completedAt": null
+        },
+        {
+            "name": "BEiT",
+            "type": "beit",
+            "upstream": [
+                "FileInput"
+            ],
+            "downstream": [
+                "Output"
+            ],
+            "data": {
+                "input": {},
+                "output": {}
+            },
+            "status": "pending",
+            "completedAt": null
+        },
+        {
+            "name": "PyPDF2",
+            "type": "pypdf2",
+            "upstream": [
+                "FileInput"
+            ],
+            "downstream": [
+                "Output"
+            ],
+            "data": {
+                "input": {},
+                "output": {}
+            },
+            "status": "pending",
+            "completedAt": null
+        },
+        {
+            "name": "PyMuPDF",
+            "type": "pymupdf",
+            "upstream": [
+                "FileInput"
+            ],
+            "downstream": [
+                "Output"
+            ],
+            "data": {
+                "input": {},
+                "output": {}
+            },
+            "status": "pending",
+            "completedAt": null
+        },
+        {
+            "name": "Output",
+            "type": "output",
+            "upstream": [
+                "PDF2Text",
+                "PyPDF2",
+                "RegexSiren-pad",
+                "RegexSiren-tes",
+                "Tesseract",
+                "Ollama",
+                "BEiT",
+                "PyMuPDF"
+            ],
+            "downstream": [],
+            "data": {
+                "input": {},
+                "output": {}
+            },
+            "status": "pending",
+            "completedAt": null
+        },
+        {
+            "name": "PDF2Text",
+            "type": "pdf2text",
+            "upstream": [
+                "FileInput"
+            ],
+            "downstream": [
+                "Output"
+            ],
+            "data": {
+                "input": {},
+                "output": {}
+            },
+            "status": "pending",
+            "completedAt": null
+        },
+        {
+            "name": "Tesseract",
+            "type": "tesseract",
+            "upstream": [
+                "FileInput"
+            ],
+            "downstream": [
+                "Output",
+                "RegexSiren-tes"
+            ],
+            "data": {
+                "input": {},
+                "output": {}
+            },
+            "status": "pending",
+            "completedAt": null
+        },
+        {
+            "name": "RegexSiren-tes",
+            "type": "regexsiren",
+            "upstream": [
+                "Tesseract"
+            ],
+            "downstream": [
+                "Output"
+            ],
+            "data": {
+                "input": {},
+                "output": {}
+            },
+            "status": "pending",
+            "completedAt": null
+        },
+        {
+            "name": "PaddleOCR",
+            "type": "paddleocr",
+            "upstream": [
+                "FileInput"
+            ],
+            "downstream": [
+                "RegexSiren-pad"
+            ],
+            "data": {
+                "input": {},
+                "output": {}
+            },
+            "status": "pending",
+            "completedAt": null
+        },
+        {
+            "name": "RegexSiren-pad",
+            "type": "regexsiren",
+            "upstream": [
+                "PaddleOCR"
+            ],
+            "downstream": [
+                "Output"
+            ],
+            "data": {
+                "input": {},
+                "output": {}
+            },
+            "status": "pending",
+            "completedAt": null
+        },
+        {
+            "name": "Ollama",
+            "type": "ollama",
+            "upstream": [
+                "FileInput"
+            ],
+            "downstream": [
+                "Output"
+            ],
+            "data": {
+                "input": {},
+                "output": {}
+            },
+            "status": "pending",
+            "completedAt": null
+        }
+    ]
+}

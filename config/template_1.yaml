@@ -1,0 +1,29 @@
+name: testflow
+createdAt: 24-05-01 16:27:00
+nodes:
+  - 1: FileInput,fileinput
+  - 2: BEiT,beit
+  - 3: PyPDF2,pypdf2
+  - 4: PyMuPDF,pymupdf
+  - 5: Output,output
+  - 6: PDF2Text,pdf2text
+  - 7: Tesseract,tesseract
+  - 8: RegexSirenTes,regexsiren  
+  - 9: PaddleOCR,paddleocr
+  - 10: RegexSirenPad,regexsiren
+  - 11: Ollama,ollama
+  - 12: Prompt,prompt
+flow: 
+  - 1>>2,3,4,6,7,9
+  - 2,3,4,6,7>>5
+  - 7>>8
+  - 8>>5
+  - 9>>10
+  - 10>>5
+  - 9>>12
+  - 12>>11
+  - 11>>5
+inputs:
+  - FileInput: 
+      filename: ticket_resto.pdf
+      

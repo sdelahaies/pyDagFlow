@@ -1,0 +1,36 @@
+digraph {
+	FileInput [label="FileInput
+fileinput" color=lightblue style=filled]
+	BEiT [label="BEiT
+beit" color=lightblue style=filled]
+	PyPDF2 [label="PyPDF2
+pypdf2" color=lightblue style=filled]
+	PyMuPDF [label="PyMuPDF
+pymupdf" color=lightblue style=filled]
+	Output [label="Output
+output" color=lightblue style=filled]
+	PDF2Text [label="PDF2Text
+pdf2text" color=lightblue style=filled]
+	Tesseract [label="Tesseract
+tesseract" color=lightblue style=filled]
+	RegexSiren [label="RegexSiren
+regexsiren" color=lightblue style=filled]
+	PaddleOCR [label="PaddleOCR
+paddleocr" color=lightblue style=filled]
+	RegexSiren [label="RegexSiren
+regexsiren" color=lightblue style=filled]
+	FileInput -> BEiT
+	FileInput -> PyPDF2
+	FileInput -> PyMuPDF
+	FileInput -> PDF2Text
+	FileInput -> Tesseract
+	FileInput -> PaddleOCR
+	BEiT -> Output
+	PyPDF2 -> Output
+	PyMuPDF -> Output
+	PDF2Text -> Output
+	Tesseract -> Output
+	Tesseract -> RegexSiren
+	RegexSiren -> Output
+	PaddleOCR -> RegexSiren
+}
